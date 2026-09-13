@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     CLIENTE DE CHAT EM TEMPO REAL
+     Este arquivo é carregado em cada computador da rede.
+     ============================================================ -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💬 Chat em Tempo Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         TELA 1: LOGIN (aparece primeiro)
+         ============================================================ -->
+    <div id="tela-login" class="tela">
+        <div class="caixa-login">
+            <h1>💬 Chat em Tempo Real</h1>
+            <p>Digite seu nome para entrar:</p>
+            
+            <input 
+                type="text" 
+                id="input-nome" 
+                placeholder="Seu nome..." 
+                maxlength="20"
+                autofocus
+            >
+            
+            <button id="btn-entrar">Entrar no Chat</button>
+            
+            <p class="dica">
+                <small>⚠️ Abra este site em outro computador da mesma rede!</small>
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TELA 2: CHAT (aparece depois do login)
+         ============================================================ -->
+    <div id="tela-chat" class="tela" style="display: none;">
+        
+        <!-- Cabeçalho -->
+        <header class="cabecalho-chat">
+            <h2>💬 Chat em Tempo Real</h2>
+            <div class="info-usuario">
+                <span id="nome-atual"></span>
+                <span class="status-online">🟢 Online</span>
+            </div>
+        </header>
+
+        <!-- Área principal -->
+        <div class="corpo-chat">
+            
+            <!-- Lista de usuários online (barra lateral) -->
+            <aside class="barra-lateral">
+                <h3>👥 Online</h3>
+                <ul id="lista-usuarios"></ul>
+            </aside>
+
+            <!-- Área de mensagens -->
+            <main class="area-mensagens">
+                <div id="mensagens" class="mensagens"></div>
+                
+                <div id="aviso-digitando" class="aviso-digitando"></div>
+                
+                <!-- Formulário de envio -->
+                <form id="form-mensagem" class="form-mensagem">
+                    <input 
+                        type="text" 
+                        id="input-mensagem" 
+                        placeholder="Digite sua mensagem..."
+                        autocomplete="off"
+                    >
+                    <button type="submit">Enviar 📤</button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BIBLIOTECA SOCKET.IO
+         Carregada automaticamente pelo servidor
+         ============================================================ -->
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <!-- Nosso script de chat -->
+    <script src="script.js"></script>
+
+</body>
+</html>
